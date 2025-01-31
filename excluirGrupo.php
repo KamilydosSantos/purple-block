@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['tipo'] !== 'admin') {
+if ($_SESSION['admin'] !== 1) {
     header('Location: index.php');
     exit();
 }
@@ -47,7 +47,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <title>Excluir Grupo</title>
 </head>
 <body>
-    <div class="container">
+    <div class="card">
         <div class="titulo">
             <h1>Excluir Grupo</h1>
         </div>
@@ -55,8 +55,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <p>Tem certeza que deseja excluir o grupo <strong><?php echo htmlspecialchars($grupo['nome']); ?></strong>?</p>
 
         <form method="POST">
-            <button type="submit">Confirmar Exclusão</button>
-            <a href="adminDashboard.php">Cancelar</a>
+            <div class="botoes">
+                <a href="adminDashboard.php">Cancelar</a>
+                <button type="submit">Confirmar Exclusão</button>
+            </div>
         </form>
     </div>
 </body>

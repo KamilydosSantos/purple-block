@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['tipo'] !== 'admin') {
+if ($_SESSION['admin'] !== 1) {
     header('Location: index.php');
     exit();
 }
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Criar Novo Grupo</title>
 </head>
 <body>
-    <div class="container">
+    <div class="card">
         <div class="titulo">
             <h1>Criar Novo Grupo</h1>
         </div>
@@ -46,12 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao" required></textarea>
 
-            <button type="submit">Criar Grupo</button>
+            <div class="botoes">
+                <a href="adminDashboard.php">Cancelar</a>
+                <button type="submit">Criar Grupo</button>
+            </div>
         </form>
 
-        <div class="botoes">
-            <a href="adminDashboard.php">Cancelar</a>
-        </div>
     </div>
 </body>
 </html>

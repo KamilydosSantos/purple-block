@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['tipo'] !== 'admin') {
+if ($_SESSION['admin'] !== 1) {
     header('Location: index.php');
     exit();
 }
@@ -34,7 +34,7 @@ if (!$grupo) {
     <title>Visualizar Grupo</title>
 </head>
 <body>
-    <div class="container">
+    <div class="card">
         <div class="titulo">
             <h1>Detalhes do Grupo</h1>
         </div>

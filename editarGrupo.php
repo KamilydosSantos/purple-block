@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['tipo'] !== 'admin') {
+if ($_SESSION['admin'] !== 1) {
     header('Location: index.php');
     exit();
 }
@@ -52,24 +52,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Editar Grupo</title>
 </head>
 <body>
-    <div class="container">
+    <div class="card">
         <div class="titulo">
             <h1>Editar Grupo</h1>
         </div>
 
         <form method="POST">
-            <label for="nome">Nome do Grupo:</label>
-            <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($grupo['nome']); ?>" required>
+            <div>
+                <label for="nome">Nome do Grupo:</label>
+                <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($grupo['nome']); ?>" required>
+            </div>
 
-            <label for="descricao">Descrição:</label>
-            <textarea id="descricao" name="descricao" required><?php echo htmlspecialchars($grupo['descricao'] ?? ''); ?></textarea>
+            <div>
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" rows="4" required><?php echo htmlspecialchars($grupo['descricao'] ?? ''); ?></textarea>
+            </div>
 
-            <button type="submit">Salvar Alterações</button>
+            <div class="botoes">
+                <a href="adminDashboard.php">Cancelar</a>
+                <button type="submit">Salvar Alterações</button>
+            </div>
         </form>
 
-        <div class="botoes">
-            <a href="adminDashboard.php">Cancelar</a>
-        </div>
     </div>
 </body>
 </html>

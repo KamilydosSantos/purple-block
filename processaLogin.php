@@ -14,9 +14,9 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
 
         if($usuario && $senha === $usuario['senha']) {
             $_SESSION['email'] = $usuario['email'];
-            $_SESSION['tipo'] = $usuario['tipo'];
+            $_SESSION['admin'] = $usuario['admin'];
 
-            if ($_SESSION['tipo'] === 'admin') {
+            if ($_SESSION['admin'] === 1) {
                 header('Location: adminDashboard.php');
             } else {
                 header('Location: index.php');
