@@ -13,6 +13,8 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
         $usuario = $query->fetch(PDO::FETCH_ASSOC);
 
         if($usuario && $senha === $usuario['senha']) {
+            session_start();
+            $_SESSION['id'] = $usuario['id'];
             $_SESSION['email'] = $usuario['email'];
             $_SESSION['admin'] = $usuario['admin'];
 

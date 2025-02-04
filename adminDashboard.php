@@ -80,9 +80,11 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $usuario['nome_completo']; ?></td>
                             <td><?php echo $usuario['email']; ?></td>
                             <td>
-                                <a class="acao" href="visualizarUsuario.php?id=<?php echo $usuario['id']; ?>"><img src="visualizarIcon.svg" alt=""></a>
-                                <a class="acao" href="editarUsuario.php?id=<?php echo $usuario['id']; ?>"><img src="editarIcon.svg" alt=""></a>
-                                <a class="acao" href="excluirUsuario.php?id=<?php echo $usuario['id']; ?>"><img src="excluirIcon.svg" alt=""></a>
+                                <a class="acao" href="visualizarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="visualizarIcon.svg" alt=""></a>
+                                <a class="acao" href="editarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="editarIcon.svg" alt=""></a>
+                                <?php if ($usuario['id'] != $_SESSION['id']) { ?>
+                                    <a class="acao" href="excluirUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="excluirIcon.svg" alt=""></a>
+                                <?php }?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
