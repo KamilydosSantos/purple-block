@@ -1,3 +1,11 @@
+<?php
+require '../../conexao.php';
+ 
+$queryGrupos = $conexao->prepare("SELECT id, nome FROM grupo");
+$queryGrupos->execute();
+$grupos = $queryGrupos->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -28,8 +36,12 @@
             <input type="radio" id="admin-nao" name="administrador" value="0" <?= isset($admin) && $admin == 0 ? 'checked' : ''; ?>>
             <label for="admin-nao">Não</label>
          
-            <label for="grupo">Grupo Colaborativo ID:</label>
-            <input type="text" id="grupo" name="grupo" required>
+            <label for="grupo">Grupo Colaborativo:</label>
+            <select id="grupo" name="grupo" required>
+                <?php foreach ($grupos as $grupo) :?>
+                    <option value="<?php echo $grupo['id'];?>"><?php echo $grupo['id'] . ' - ' . $grupo['nome']; ?></option>
+                <?php endforeach;?>
+            </select>
           
             <div class="botoes">
                 <a href="../adminDashboard.php">Cancelar</a>

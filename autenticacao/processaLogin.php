@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'conexao.php';
+require '../conexao.php';
 
 if(isset($_POST['email']) && isset($_POST['senha'])) {
     $email = $_POST['email'];
@@ -19,14 +19,14 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
             $_SESSION['admin'] = $usuario['admin'];
 
             if ($_SESSION['admin'] === 1) {
-                header('Location: administrativo/adminDashboard.php');
+                header('Location: ../administrativo/adminDashboard.php');
             } else {
-                header('Location: index.php');
+                header('Location: ../index.php');
             }
             exit();
         } else {
             $_SESSION['erro'] = "Email ou senha inválidos.";
-            header('Location: index.php');
+            header('Location: ../index.php');
             echo "Deu erro";
             exit();
         }

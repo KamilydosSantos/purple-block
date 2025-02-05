@@ -48,9 +48,9 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $grupo['nome']; ?></td>
                             <td><?php echo $grupo['descricao']; ?></td>
                             <td>
-                                <a class="acao" href="grupos/visualizarGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../icons/visualizarIcon.svg" alt=""></a> 
-                                <a class="acao" href="grupos/editarGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../icons/editarIcon.svg" alt=""></a>
-                                <a class="acao" href="grupos/excluirGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../icons/excluirIcon.svg" alt=""></a>
+                                <a class="acao" href="grupos/visualizarGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../assets/icons/visualizarIcon.svg" alt=""></a> 
+                                <a class="acao" href="grupos/editarGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../assets/icons/editarIcon.svg" alt=""></a>
+                                <a class="acao" href="grupos/excluirGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../assets/icons/excluirIcon.svg" alt=""></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -80,10 +80,10 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $usuario['nome_completo']; ?></td>
                             <td><?php echo $usuario['email']; ?></td>
                             <td>
-                                <a class="acao" href="usuarios/visualizarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../icons/visualizarIcon.svg" alt=""></a>
-                                <a class="acao" href="usuarios/editarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../icons/editarIcon.svg" alt=""></a>
+                                <a class="acao" href="usuarios/visualizarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/visualizarIcon.svg" alt=""></a>
+                                <a class="acao" href="usuarios/editarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/editarIcon.svg" alt=""></a>
                                 <?php if ($usuario['id'] != $_SESSION['id']) { ?>
-                                    <a class="acao" href="usuarios/excluirUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../icons/excluirIcon.svg" alt=""></a>
+                                    <a class="acao" href="usuarios/excluirUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/excluirIcon.svg" alt=""></a>
                                 <?php }?>
                             </td>
                         </tr>

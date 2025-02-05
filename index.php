@@ -2,12 +2,12 @@
 session_start();
 
 if(!isset($_SESSION['email'])) {
-    header("Location: login.php");
+    header("Location: autenticacao/login.php");
     exit();
 }
 
 if($_SESSION['admin'] == 1) {
-    header("Location: adminDashboard.php");
+    header("Location: administrativo/adminDashboard.php");
     exit();
 }
 

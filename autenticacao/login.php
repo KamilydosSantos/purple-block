@@ -8,7 +8,7 @@
     <title>PurpleBlock | Login</title>
 </head>
 <body>
-    <form id="form" action="processaLogin.php" method="POST">
+    <form id="form" action="processaLogin.php" method="POST" onsubmit="validarFormulario(event)">
         <div class="titulo">
             <h1>Faça o seu login</h1>
         </div>
@@ -26,5 +26,6 @@
             <input class="submit" type="submit" value="Entrar">
         </div>
     </form>
+    <script src="../assets/js/login.js"></script>
 </body>
 </html>
