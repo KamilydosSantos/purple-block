@@ -1,5 +1,6 @@
 <?php
-session_start();
+include '../menu/menu.php';
+
 if ($_SESSION['admin'] !== 1) {
     header('Location: ../index.php');
     exit();
@@ -21,7 +22,9 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="../assets/css/adminDashboard.css">
+    <link rel="stylesheet" href="../menu/menu.css">
+    <link rel="stylesheet" href="/purple-block/assets/css/index.css">
     <title>PurpleBlock | Painel Administrativo</title>
 </head>
 <body>

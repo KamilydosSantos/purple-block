@@ -1,9 +1,10 @@
 <?php
-session_start();
-require '../../conexao.php';
+include '../menu/menu.php';
+
+require '../conexao.php';
 
 if (!isset($_SESSION['id'])) {
-    header('Location: ../../index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -20,7 +21,8 @@ $notas = $queryNotas->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Notas</title>
-    <link rel="stylesheet" href="notas.css">
+    <link rel="stylesheet" href="../assets/css/notas.css">
+    <link rel="stylesheet" href="../menu/menu.css">
 </head>
 <body>
     <div class="container">
@@ -58,7 +60,7 @@ $notas = $queryNotas->fetchAll(PDO::FETCH_ASSOC);
                         <hr>
                         <p class="conteudo"><?php echo nl2br(htmlspecialchars($nota['conteudo'])); ?></p>
                     </a>
-                    <form method="POST" action="../backend/excluirNota.php" class="form-excluir">
+                    <form method="POST" action="backend/excluirNota.php" class="form-excluir">
                         <input type="hidden" name="nota_id" value="<?php echo $nota['id']; ?>">
                         <button type="submit" class="btn-excluir">
                             <span class="fechar">X</span>

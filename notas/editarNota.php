@@ -1,9 +1,9 @@
 <?php
 session_start();
-require '../../conexao.php';
+require '../conexao.php';
 
 if (!isset($_SESSION['id'])) {
-    header('Location: ../../index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Nota</title>
-    <link rel="stylesheet" href="notas.css">
+    <link rel="stylesheet" href="../assets/css/notas.css">
 </head>
 <body>
     <div class="container">

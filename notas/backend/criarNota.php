@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $queryInsert->bindParam(':grupo_id', $grupo_id);
 
     if ($queryInsert->execute()) {
-        header('Location: ../frontend/notas.php');
+        header('Location: ../notas.php');
         exit();
     } else {
         echo "Erro ao criar a nota.";

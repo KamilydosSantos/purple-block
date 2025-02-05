@@ -18,6 +18,10 @@ $queryUsuario = $conexao->prepare("SELECT * FROM usuario WHERE id = :id");
 $queryUsuario->bindParam(':id', $idUsuario, PDO::PARAM_INT);
 $queryUsuario->execute();
 $usuario = $queryUsuario->fetch(PDO::FETCH_ASSOC);
+
+$queryGrupos = $conexao->prepare("SELECT id, nome FROM grupo");
+$queryGrupos->execute();
+$grupos = $queryGrupos->fetchAll(PDO::FETCH_ASSOC)
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +52,13 @@ $usuario = $queryUsuario->fetch(PDO::FETCH_ASSOC);
 
             <div>
                 <label for="grupo_id">Grupo Colaborativo:</label>
-                <input type="text" id="grupo_id" name="grupo_id" value="<?php echo htmlspecialchars($usuario['grupo_id']); ?>" required>
+                <select id="grupo_id" name="grupo_id" required>
+                    <?php foreach ($grupos as $grupo): ?>
+                        <option value="<?php echo $grupo['id']; ?>" <?php echo ($usuario['grupo_id'] == $grupo['id']) ? 'selected' : ''; ?>>
+                            <?php echo $grupo['id'] . ' - ' . $grupo['nome']; ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
 
             <div class="botoes">

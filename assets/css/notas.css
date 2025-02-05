@@ -7,16 +7,23 @@
   display: flex;
   gap: 16px;
   cursor: pointer;
+  max-width: 80vw;
+  flex-wrap: wrap;
 }
 
 .nota {
-  background-color: #f1f1f1;
   min-width: max-content;
-  max-width: 200px;
+  flex: 1 1 0;
+  box-sizing: border-box;
   padding: 16px;
   border-radius: 8px;
   text-decoration: none;
   position: relative;
+  box-sizing: border-box;
+}
+
+.notas .nota:nth-last-child(-n+3) {
+  flex-grow: 0;
 }
 
 .nota-link {

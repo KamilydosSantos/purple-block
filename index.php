@@ -11,5 +11,5 @@ if($_SESSION['admin'] == 1) {
     exit();
 }
 
-header("Location: notas/frontend/notas.php");
+header("Location: notas/notas.php");
 exit();

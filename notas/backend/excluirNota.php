@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($queryDelete->execute()) {
             echo "Nota excluída com sucesso!";
-            header('Location: ../frontend/notas.php');
+            header('Location: ../notas.php');
             exit();
         } else {
             echo "Erro ao excluir a nota.";
