@@ -1,26 +1,40 @@
 .container {
-  max-width: 60vw;
+  max-width: 80vw;
   margin: auto;
 }
 
-.notas {
+.header {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notas {
+  background-color: #DCD8E1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 colunas de largura igual */
+  gap: 16px; /* Espaço entre as colunas e as linhas */
+  padding: 16px;
   cursor: pointer;
   max-width: 80vw;
-  flex-wrap: wrap;
+  border-radius: 16px;
 }
 
 .nota {
-  min-width: max-content;
-  flex: 1 1 0;
-  box-sizing: border-box;
+  min-width: 250px; /* Largura mínima 
   padding: 16px;
   border-radius: 8px;
   text-decoration: none;
   position: relative;
   box-sizing: border-box;
-}
+  max-height: none;
+de cada nota */
+  padding: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  position: relative;
+  box-sizing: border-box;
+  max-height: none;
 
 .notas .nota:nth-last-child(-n+3) {
   flex-grow: 0;
@@ -61,6 +75,13 @@
 .btn-excluir {
   border: none;
   cursor: pointer;
+  border-radius: 100%;
+  padding: 4px;
+  background-color: transparent;
+}
+
+.btn-excluir:hover {
+  background-color: #ABA2B8;
 }
 
 .fechar {
@@ -71,78 +92,6 @@
 
 .fechar:hover {
   color: #453750;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
-body {
-    background-color: #ABA2B8;
-    font-family: "Roboto", sans-serif;
-}
-
-#form {
-    width: 30vw;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 16px;
-    background-color: #FFFFFF;
-    box-shadow: 12px 24px 16px rgba(0, 0, 0, .25);
-}
-
-.titulo {
-    padding: 8px 0;
-    background-color: #453750;
-    color: #FFFFFF;
-    font-size: .8rem;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 16px 16px 0 0;
-}
-
-.campos {
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.campos__campo {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.campos__campo input, .campos__campo textarea {
-    padding: 16px;
-    background-color: #F5F5F5;
-    border: 2px solid #F5F5F5;
-    border-radius: 8px;
-}
-
-.campos__campo input:hover, .campos__campo textarea:hover {
-    border-color: #453750;
-}
-
-.submit {
-    background-color: #453750;
-    color: #FFFFFF;
-    padding: 16px;
-    border-radius: 8px;
-    border: none;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.submit:hover {
-    background-color: #ABA2B8;
-    color: #000000;
 }
 
 @media screen and (max-width: 1024px) {

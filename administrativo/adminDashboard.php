@@ -22,16 +22,14 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/adminDashboard.css">
     <link rel="stylesheet" href="../menu/menu.css">
-    <link rel="stylesheet" href="/purple-block/assets/css/index.css">
     <title>PurpleBlock | Painel Administrativo</title>
 </head>
 <body>
     <div class="container">
-        <div class="titulo">
-            <h1>Painel Administrativo</h1>
-        </div>
+        <h1 class="titulo">Painel Administrativo</h1>
 
         <div class="tabela">
             <h2>Grupos Colaborativos</h2>
@@ -60,7 +58,7 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
             <div class="botoes">
-                <a href="grupos/criarGrupo.php">Criar Novo Grupo</a>
+                <a href="grupos/criarGrupo.php">Criar novo grupo</a>
             </div>
         </div>
 
@@ -94,7 +92,7 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
             <div class="botoes">
-                <a href="usuarios/criarUsuario.php">Criar Novo Usuário</a>
+                <a href="usuarios/criarUsuario.php">Criar novo usuário</a>
             </div>
         </div>
 

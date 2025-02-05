@@ -4,6 +4,30 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+.container {
+    width: 80vw;
+    margin: auto;
+    padding-top: 36px;
+}
+
 .card {
     background-color: #F9f9F9;
+}
+
+.titulo {
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #453750;
+}
+
+.botao {
+    padding: 8px;
+    background-color: #453750;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: bold;
 }

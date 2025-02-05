@@ -9,10 +9,22 @@ if (!isset($_SESSION['id'])) {
 }
 
 $userId = $_SESSION['id'];
-$queryNotas = $conexao->prepare("SELECT * FROM nota WHERE usuario_id = :usuario_id");
-$queryNotas->bindParam(':usuario_id', $userId);
-$queryNotas->execute();
-$notas = $queryNotas->fetchAll(PDO::FETCH_ASSOC);
+
+$queryGrupo = $conexao->prepare("SELECT grupo_id FROM usuario WHERE id = :usuario_id LIMIT 1");
+$queryGrupo->bindParam(':usuario_id', $userId);
+$queryGrupo->execute();
+$grupo = $queryGrupo->fetch(PDO::FETCH_ASSOC);
+
+if ($grupo) {
+    $grupoId = $grupo['grupo_id'];
+
+    $queryNotas = $conexao->prepare("SELECT * FROM nota WHERE grupo_id = :grupo_id ORDER BY ultima_edicao DESC");
+    $queryNotas->bindParam(':grupo_id', $grupoId);
+    $queryNotas->execute();
+    $notas = $queryNotas->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    $notas = [];
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,14 +33,16 @@ $notas = $queryNotas->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Notas</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/notas.css">
     <link rel="stylesheet" href="../menu/menu.css">
 </head>
 <body>
     <div class="container">
-        <h1>Notas Colaborativas do Grupo</h1>
-
-        <a href="criarNota.php" class="btn-criar">Criar Nova Nota</a>
+        <div class="header">
+            <h1 class="titulo">Notas Colaborativas do Grupo</h1>
+            <a class="botao" href="criarNota.php" class="btn-criar">Criar nova nota</a>
+        </div>
 
         <div class="notas">
             <?php foreach ($notas as $nota): ?>
@@ -53,7 +67,7 @@ $notas = $queryNotas->fetchAll(PDO::FETCH_ASSOC);
                     $tempoPassado = 'há ' . floor($diferenca / 86400) . ' dias';
                 }
                 ?>
-                <div class="nota">
+                <div class="nota card">
                     <a href="editarNota.php?id=<?php echo $nota['id']; ?>" class="nota-link">
                         <p class="ultima-edicao"><?php echo $tempoPassado; ?></p>
                         <h2 class="titulo"><?php echo htmlspecialchars($nota['titulo']); ?></h2>
@@ -63,7 +77,9 @@ $notas = $queryNotas->fetchAll(PDO::FETCH_ASSOC);
                     <form method="POST" action="backend/excluirNota.php" class="form-excluir">
                         <input type="hidden" name="nota_id" value="<?php echo $nota['id']; ?>">
                         <button type="submit" class="btn-excluir">
-                            <span class="fechar">X</span>
+                            <span class="fechar">
+                                <img src="../assets/icons/excluirIcon.svg" alt="" width="16" height="16">
+                            </span>
                         </button>
                     </form>
                 </div>
