@@ -1,11 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['admin'] !== 1) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
 }
 
-require 'conexao.php';
+require '../../conexao.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
@@ -26,7 +26,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         if ($queryDelete->execute()) {
             echo "Usuário excluído com sucesso!";
-            header("Location: adminDashboard.php");
+            header("Location: ../adminDashboard.php");
             exit();
         } else {
             echo "Erro ao excluir o usuário.";
@@ -34,7 +34,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     }
 } else {
     echo "ID inválido!";
-    header("Location: adminDashboard.php");
+    header("Location: ../adminDashboard.php");
     exit();
 }
 ?>

@@ -1,11 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['admin'] !== 1) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
 }
 
-require 'conexao.php';
+require '../../conexao.php';
 
 if (!isset($_POST['id']) || empty($_POST['id'])) {
     echo "Usuário não encontrado.";
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($queryUpdate->execute()) {
         echo "Usuário atualizado com sucesso!";
-        header("Location: adminDashboard.php");
+        header("Location: ../adminDashboard.php");
         exit();
     } else {
         echo "Erro ao atualizar os dados do usuário.";

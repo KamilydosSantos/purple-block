@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'conexao.php';
+require '../../conexao.php';
 
 if (!isset($_SESSION['id'])) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
 }
 
@@ -36,8 +36,7 @@ $notas = $queryNotas->fetchAll(PDO::FETCH_ASSOC);
                       <hr>
                       <p class="conteudo"><?php echo nl2br(htmlspecialchars($nota['conteudo'])); ?></p>
                   </a>
-                  <!-- Botão de excluir, inicialmente oculto -->
-                  <form method="POST" action="excluirNota.php" class="form-excluir">
+                  <form method="POST" action="../backend/excluirNota.php" class="form-excluir">
                       <input type="hidden" name="nota_id" value="<?php echo $nota['id']; ?>">
                       <button type="submit" class="btn-excluir">Excluir</button>
                   </form>

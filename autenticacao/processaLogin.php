@@ -19,7 +19,7 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
             $_SESSION['admin'] = $usuario['admin'];
 
             if ($_SESSION['admin'] === 1) {
-                header('Location: adminDashboard.php');
+                header('Location: administrativo/adminDashboard.php');
             } else {
                 header('Location: index.php');
             }

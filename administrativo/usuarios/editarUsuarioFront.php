@@ -1,11 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['admin'] !== 1) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
 }
 
-require 'conexao.php';
+require '../../conexao.php';
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     echo "Usuário não encontrado.";
@@ -25,7 +25,7 @@ $usuario = $queryUsuario->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="../adminDashboard.css">
     <title>Editar Usuário</title>
 </head>
 <body>
@@ -52,7 +52,7 @@ $usuario = $queryUsuario->fetch(PDO::FETCH_ASSOC);
             </div>
 
             <div class="botoes">
-                <a href="adminDashboard.php">Cancelar</a>
+                <a href="../adminDashboard.php">Cancelar</a>
                 <button type="submit">Salvar Alterações</button>
             </div>
         </form>

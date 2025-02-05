@@ -1,11 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['admin'] !== 1) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
 }
 
-require 'conexao.php';
+require '../../conexao.php';
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     echo "Grupo não encontrado.";
@@ -30,7 +30,7 @@ if (!$grupo) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="../adminDashboard.css">
     <title>Visualizar Grupo</title>
 </head>
 <body>
@@ -46,7 +46,7 @@ if (!$grupo) {
         </div>
 
         <div class="botoes">
-            <a href="adminDashboard.php">Voltar</a>
+            <a href="../adminDashboard.php">Voltar</a>
         </div>
     </div>
 </body>

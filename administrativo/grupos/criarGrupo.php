@@ -1,11 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['admin'] !== 1) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
 }
 
-require 'conexao.php';
+require '../../conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($queryInsert->execute()) {
         echo "Grupo criado com sucesso!";
-        header("Location: adminDashboard.php");
+        header("Location: ../adminDashboard.php");
         exit();
     } else {
         echo "Erro ao criar o grupo.";
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="../adminDashboard.css">
     <title>Criar Novo Grupo</title>
 </head>
 <body>
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea id="descricao" name="descricao" required></textarea>
 
             <div class="botoes">
-                <a href="adminDashboard.php">Cancelar</a>
+                <a href="../adminDashboard.php">Cancelar</a>
                 <button type="submit">Criar Grupo</button>
             </div>
         </form>

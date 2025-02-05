@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-    header('Location: login.php');
+    header('Location: ../../autenticacao/login.php');
     exit();
 }
 ?>
@@ -11,7 +11,7 @@ if (!isset($_SESSION['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="">
     <title>Criar Nota</title>
 </head>
 <body>
@@ -20,7 +20,7 @@ if (!isset($_SESSION['id'])) {
             <h1>Criar Nova Nota</h1>
         </div>
 
-        <form method="POST" action="backend/criarNota.php">
+        <form method="POST" action="../backend/criarNota.php">
             <label for="titulo">Título da Nota:</label>
             <input type="text" id="titulo" name="titulo" required>
 

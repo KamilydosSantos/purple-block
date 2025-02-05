@@ -1,9 +1,9 @@
 <?php
 session_start();
-require '../conexao.php';
+require '../../conexao.php';
 
 if (!isset($_SESSION['id'])) {
-    header('Location: login.php');
+    header('Location: ../../autenticacao/login.php');
     exit();
 }
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $queryInsert->bindParam(':grupo_id', $grupo_id);
 
     if ($queryInsert->execute()) {
-        header('Location: ../notas.php');
+        header('Location: ../frontend/notas.php');
         exit();
     } else {
         echo "Erro ao criar a nota.";

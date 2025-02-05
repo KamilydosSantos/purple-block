@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="../adminDashboard.css">
     <title>Criar Novo Usuário</title>
 </head>
 <body>
@@ -22,8 +22,7 @@
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" required>
 
-            <label for="admin-sim">Usuário Administrador:</label>
-
+            <label>Usuário Administrador:</label>
             <input type="radio" id="admin-sim" name="administrador" value="1" <?= isset($admin) && $admin == 1 ? 'checked' : ''; ?>>
             <label for="admin-sim">Sim</label>
             <input type="radio" id="admin-nao" name="administrador" value="0" <?= isset($admin) && $admin == 0 ? 'checked' : ''; ?>>
@@ -33,7 +32,7 @@
             <input type="text" id="grupo" name="grupo" required>
           
             <div class="botoes">
-                <a href="adminDashboard.php">Cancelar</a>
+                <a href="../adminDashboard.php">Cancelar</a>
                 <button type="submit">Criar Usuário</button>
             </div>
         </form>

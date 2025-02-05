@@ -1,10 +1,10 @@
 <?php
 session_start();
 if ($_SESSION['admin'] !== 1) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
-require 'conexao.php';
+require '../conexao.php';
 
 $queryGrupos = $conexao->prepare("SELECT * FROM grupo");
 $queryGrupos->execute();
@@ -48,16 +48,16 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $grupo['nome']; ?></td>
                             <td><?php echo $grupo['descricao']; ?></td>
                             <td>
-                                <a class="acao" href="visualizarGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="visualizarIcon.svg" alt=""></a> 
-                                <a class="acao" href="editarGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="editarIcon.svg" alt=""></a>
-                                <a class="acao" href="excluirGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="excluirIcon.svg" alt=""></a>
+                                <a class="acao" href="grupos/visualizarGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../icons/visualizarIcon.svg" alt=""></a> 
+                                <a class="acao" href="grupos/editarGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../icons/editarIcon.svg" alt=""></a>
+                                <a class="acao" href="grupos/excluirGrupo.php?id=<?php echo $grupo['id']; ?>"><img src="../icons/excluirIcon.svg" alt=""></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
             <div class="botoes">
-                <a href="criarGrupo.php">Criar Novo Grupo</a>
+                <a href="grupos/criarGrupo.php">Criar Novo Grupo</a>
             </div>
         </div>
 
@@ -80,10 +80,10 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $usuario['nome_completo']; ?></td>
                             <td><?php echo $usuario['email']; ?></td>
                             <td>
-                                <a class="acao" href="visualizarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="visualizarIcon.svg" alt=""></a>
-                                <a class="acao" href="editarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="editarIcon.svg" alt=""></a>
+                                <a class="acao" href="usuarios/visualizarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../icons/visualizarIcon.svg" alt=""></a>
+                                <a class="acao" href="usuarios/editarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../icons/editarIcon.svg" alt=""></a>
                                 <?php if ($usuario['id'] != $_SESSION['id']) { ?>
-                                    <a class="acao" href="excluirUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="excluirIcon.svg" alt=""></a>
+                                    <a class="acao" href="usuarios/excluirUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../icons/excluirIcon.svg" alt=""></a>
                                 <?php }?>
                             </td>
                         </tr>
@@ -91,7 +91,7 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
             <div class="botoes">
-                <a href="criarUsuario.php">Criar Novo Usuário</a>
+                <a href="usuarios/criarUsuario.php">Criar Novo Usuário</a>
             </div>
         </div>
 

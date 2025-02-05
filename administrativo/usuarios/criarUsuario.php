@@ -1,17 +1,17 @@
 <?php
 session_start();
 if ($_SESSION['admin'] !== 1) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
 }
 
-require 'conexao.php';
+require '../../conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $admin = isset($_POST['administrador']) ? 1 : 0;
+    $admin = isset($_POST['administrador']) && $_POST['administrador'] === 'on' ? 1 : 0;
     $grupo = $_POST['grupo'];
 
     $queryInsert = $conexao->prepare("INSERT INTO usuario (nome_completo, email, senha, admin, grupo_id) VALUES (:nome, :email, :senha, :administrador, :grupo)");
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($queryInsert->execute()) {
         echo "Usuário criado com sucesso!";
-        header("Location: adminDashboard.php");
+        header("Location: ../adminDashboard.php");
         exit();
     } else {
         echo "Erro ao criar usuário.";

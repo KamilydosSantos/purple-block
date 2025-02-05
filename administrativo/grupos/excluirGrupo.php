@@ -1,11 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['admin'] !== 1) {
-    header('Location: index.php');
+    header('Location: ../../index.php');
     exit();
 }
 
-require 'conexao.php';
+require '../../conexao.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
@@ -26,7 +26,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         if ($queryDelete->execute()) {
             echo "Grupo excluído com sucesso!";
-            header("Location: adminDashboard.php");
+            header("Location: ../adminDashboard.php");
             exit();
         } else {
             echo "Erro ao excluir o grupo.";
@@ -43,7 +43,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminDashboard.css">
+    <link rel="stylesheet" href="../adminDashboard.css">
     <title>Excluir Grupo</title>
 </head>
 <body>
@@ -56,7 +56,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <form method="POST">
             <div class="botoes">
-                <a href="adminDashboard.php">Cancelar</a>
+                <a href="../adminDashboard.php">Cancelar</a>
                 <button type="submit">Confirmar Exclusão</button>
             </div>
         </form>
