@@ -51,31 +51,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Nota</title>
+    <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/notas.css">
 </head>
 <body>
     <div class="container">
-        <h1>Editar Nota</h1>
-
-        <form method="POST">
-            <div class="campos">
-                <div class="campos__campo">
-                    <label for="titulo">Título:</label>
-                    <input type="text" id="titulo" name="titulo" value="<?php echo htmlspecialchars($nota['titulo']); ?>" required>
+        <div class="card">
+            <h1>Editar Nota</h1>
+    
+            <form method="POST">
+                <div class="campos">
+                    <div class="campos__campo">
+                        <label for="titulo">Título:</label>
+                        <input type="text" id="titulo" name="titulo" value="<?php echo htmlspecialchars($nota['titulo']); ?>" required>
+                    </div>
+    
+                    <div class="campos__campo">
+                        <label for="conteudo">Conteúdo:</label>
+                        <textarea id="conteudo" name="conteudo" required><?php echo htmlspecialchars($nota['conteudo']); ?></textarea>
+                    </div>
+    
+                    <div class="botoes">
+                        <a href="notas.php">Cancelar</a>
+                        <button type="submit" class="submit">Salvar Alterações</button>
+                    </div>
                 </div>
-
-                <div class="campos__campo">
-                    <label for="conteudo">Conteúdo:</label>
-                    <textarea id="conteudo" name="conteudo" required><?php echo htmlspecialchars($nota['conteudo']); ?></textarea>
-                </div>
-
-                <div class="botoes">
-                    <a href="notas.php">Cancelar</a>
-                    <button type="submit" class="submit">Salvar Alterações</button>
-                </div>
-            </div>
-        </form>
-
+            </form>
+        </div>
     </div>
 </body>
 </html>

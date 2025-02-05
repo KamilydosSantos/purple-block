@@ -67,12 +67,12 @@ if ($grupo) {
                     $tempoPassado = 'há ' . floor($diferenca / 86400) . ' dias';
                 }
                 ?>
-                <div class="nota card">
+                <div class="nota card-notas">
                     <a href="editarNota.php?id=<?php echo $nota['id']; ?>" class="nota-link">
                         <p class="ultima-edicao"><?php echo $tempoPassado; ?></p>
-                        <h2 class="titulo"><?php echo htmlspecialchars($nota['titulo']); ?></h2>
+                        <h2 class="titulo-nota"><?php echo htmlspecialchars($nota['titulo']); ?></h2>
                         <hr>
-                        <p class="conteudo"><?php echo nl2br(htmlspecialchars($nota['conteudo'])); ?></p>
+                        <p class="conteudo-nota"><?php echo nl2br(htmlspecialchars($nota['conteudo'])); ?></p>
                     </a>
                     <form method="POST" action="backend/excluirNota.php" class="form-excluir">
                         <input type="hidden" name="nota_id" value="<?php echo $nota['id']; ?>">

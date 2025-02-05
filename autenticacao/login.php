@@ -21,7 +21,7 @@
 
             <div class="campos__campo">
                 <label for="senha">Senha</label>
-                <input type="text" name="senha" id="senha">
+                <input type="password" name="senha" id="senha">
             </div>
             <input class="submit" type="submit" value="Entrar">
         </div>

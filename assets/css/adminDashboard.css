@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 80vw;
 }
 
 .titulo {
@@ -125,7 +125,8 @@ a:hover {
 }
 
 .card input, 
-.card textarea {
+.card textarea,
+.card select {
   padding: 8px;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -135,4 +136,19 @@ a:hover {
 
 .card textarea {
   resize: none;
+}
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+}
+
+.radio_opcao {
+  display: flex;
+  gap: 4px;
+}
+
+.radio_opcao input {
+  max-width: max-content;
 }

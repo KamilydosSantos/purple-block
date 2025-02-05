@@ -31,11 +31,18 @@ $grupos = $queryGrupos->fetchAll(PDO::FETCH_ASSOC);
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" required>
 
-            <label>Usuário Administrador:</label>
-            <input type="radio" id="admin-sim" name="administrador" value="1" <?= isset($admin) && $admin == 1 ? 'checked' : ''; ?>>
-            <label for="admin-sim">Sim</label>
-            <input type="radio" id="admin-nao" name="administrador" value="0" <?= isset($admin) && $admin == 0 ? 'checked' : ''; ?>>
-            <label for="admin-nao">Não</label>
+            <div class="radio">
+                <label>Usuário Administrador:</label>
+                <div class="radio_opcao">
+                    <input type="radio" id="admin-sim" name="administrador" value="1" <?= isset($admin) && $admin == 1 ? 'checked' : ''; ?>>
+                    <label for="admin-sim">Sim</label>
+                </div>
+                <div class="radio_opcao">
+                    <input type="radio" id="admin-nao" name="administrador" value="0" <?= isset($admin) && $admin == 0 ? 'checked' : ''; ?>>
+                    <label for="admin-nao">Não</label>
+                </div>
+                    
+            </div>
          
             <label for="grupo">Grupo Colaborativo:</label>
             <select id="grupo" name="grupo" required>
