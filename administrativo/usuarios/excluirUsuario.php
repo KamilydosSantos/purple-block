@@ -7,34 +7,42 @@ if ($_SESSION['admin'] !== 1) {
 
 require '../../conexao.php';
 
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $id = $_GET['id'];
-
-    $queryUsuario = $conexao->prepare("SELECT * FROM usuario WHERE id = :id");
-    $queryUsuario->bindParam(':id', $id, PDO::PARAM_INT);
-    $queryUsuario->execute();
-    $usuario = $queryUsuario->fetch(PDO::FETCH_ASSOC);
-
-    if (!$usuario) {
-        echo "Usuário não encontrado!";
-        exit();
-    }
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $queryDelete = $conexao->prepare("DELETE FROM usuario WHERE id = :id");
-        $queryDelete->bindParam(':id', $id, PDO::PARAM_INT);
-
-        if ($queryDelete->execute()) {
-            echo "Usuário excluído com sucesso!";
-            header("Location: ../adminDashboard.php");
-            exit();
-        } else {
-            echo "Erro ao excluir o usuário.";
-        }
-    }
-} else {
-    echo "ID inválido!";
-    header("Location: ../adminDashboard.php");
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    echo "Usuário não encontrado.";
     exit();
 }
+
+$idUsuario = $_GET['id'];
+
+$queryUsuario = $conexao->prepare("SELECT * FROM usuario WHERE id = :id");
+$queryUsuario->bindParam(':id', $idUsuario, PDO::PARAM_INT);
+$queryUsuario->execute();
+$usuario = $queryUsuario->fetch(PDO::FETCH_ASSOC);
 ?>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/index.css">
+    <link rel="stylesheet" href="../../assets/css/adminDashboard.css">
+    <title>Excluir Usuário</title>
+</head>
+<body>
+    <div class="card">
+        <div class="titulo">
+            <h1>Excluir Usuário</h1>
+        </div>
+
+        <p>Tem certeza que deseja excluir o usuário <strong><?php echo htmlspecialchars($usuario['nome_completo']); ?></strong>?</p>
+
+        <form action="backend/excluirUsuario.php?id=<?=$usuario['id']?>" method="POST">
+            <div class="botoes">
+                <a href="../adminDashboard.php">Cancelar</a>
+                <button type="submit">Confirmar Exclusão</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

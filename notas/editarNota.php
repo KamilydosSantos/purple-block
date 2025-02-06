@@ -15,9 +15,8 @@ if (!isset($_GET['id'])) {
 $notaId = $_GET['id'];
 $userId = $_SESSION['id'];
 
-$queryNota = $conexao->prepare("SELECT * FROM nota WHERE id = :id AND usuario_id = :usuario_id");
+$queryNota = $conexao->prepare("SELECT * FROM nota WHERE id = :id");
 $queryNota->bindParam(':id', $notaId);
-$queryNota->bindParam(':usuario_id', $userId);
 $queryNota->execute();
 $nota = $queryNota->fetch(PDO::FETCH_ASSOC);
 
@@ -30,11 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = $_POST['titulo'];
     $conteudo = $_POST['conteudo'];
 
-    $queryUpdate = $conexao->prepare("UPDATE nota SET titulo = :titulo, conteudo = :conteudo WHERE id = :id AND usuario_id = :usuario_id");
+    $queryUpdate = $conexao->prepare("UPDATE nota SET titulo = :titulo, conteudo = :conteudo WHERE id = :id");
     $queryUpdate->bindParam(':titulo', $titulo);
     $queryUpdate->bindParam(':conteudo', $conteudo);
     $queryUpdate->bindParam(':id', $notaId);
-    $queryUpdate->bindParam(':usuario_id', $userId);
 
     if ($queryUpdate->execute()) {
         header('Location: notas.php');

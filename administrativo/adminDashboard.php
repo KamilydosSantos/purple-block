@@ -24,7 +24,7 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/index.css">
     <link rel="stylesheet" href="../assets/css/adminDashboard.css">
-    <link rel="stylesheet" href="../menu/menu.css">
+    <link rel="stylesheet" href="../assets/css/menu.css">
     <title>PurpleBlock | Painel Administrativo</title>
 </head>
 <body>
@@ -81,10 +81,10 @@ $usuarios = $queryUsuarios->fetchAll(PDO::FETCH_ASSOC);
                             <td><?php echo $usuario['nome_completo']; ?></td>
                             <td><?php echo $usuario['email']; ?></td>
                             <td>
-                                <a class="acao" href="usuarios/visualizarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/visualizarIcon.svg" alt=""></a>
-                                <a class="acao" href="usuarios/editarUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/editarIcon.svg" alt=""></a>
+                                <a class="acao" href="usuarios/visualizarUsuario.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/visualizarIcon.svg" alt=""></a>
+                                <a class="acao" href="usuarios/editarUsuario.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/editarIcon.svg" alt=""></a>
                                 <?php if ($usuario['id'] != $_SESSION['id']) { ?>
-                                    <a class="acao" href="usuarios/excluirUsuarioFront.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/excluirIcon.svg" alt=""></a>
+                                    <a class="acao" href="usuarios/excluirUsuario.php?id=<?php echo $usuario['id']; ?>"><img src="../assets/icons/excluirIcon.svg" alt=""></a>
                                 <?php }?>
                             </td>
                         </tr>

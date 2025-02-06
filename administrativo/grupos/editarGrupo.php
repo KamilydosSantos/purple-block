@@ -23,24 +23,6 @@ if (!$grupo) {
     echo "Grupo não encontrado.";
     exit();
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-
-    $queryUpdate = $conexao->prepare("UPDATE grupo SET nome = :nome, descricao = :descricao WHERE id = :id");
-    $queryUpdate->bindParam(':nome', $nome, PDO::PARAM_STR);
-    $queryUpdate->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-    $queryUpdate->bindParam(':id', $idGrupo, PDO::PARAM_INT);
-
-    if ($queryUpdate->execute()) {
-        echo "Grupo atualizado com sucesso!";
-        header("Location: ../adminDashboard.php");
-        exit();
-    } else {
-        echo "Erro ao atualizar o grupo.";
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1>Editar Grupo</h1>
         </div>
 
-        <form method="POST">
+        <form action="backend/editarGrupo.php" method="POST">
+            <input type="hidden" name="id" value="<?php echo $grupo['id'];?>">
             <div>
                 <label for="nome">Nome do Grupo:</label>
                 <input type="text" id="nome" name="nome" value="<?php echo htmlspecialchars($grupo['nome']); ?>" required>

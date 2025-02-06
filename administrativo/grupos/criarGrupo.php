@@ -4,25 +4,6 @@ if ($_SESSION['admin'] !== 1) {
     header('Location: ../../index.php');
     exit();
 }
-
-require '../../conexao.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = $_POST['nome'];
-    $descricao = $_POST['descricao'];
-
-    $queryInsert = $conexao->prepare("INSERT INTO grupo (nome, descricao) VALUES (:nome, :descricao)");
-    $queryInsert->bindParam(':nome', $nome, PDO::PARAM_STR);
-    $queryInsert->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-
-    if ($queryInsert->execute()) {
-        echo "Grupo criado com sucesso!";
-        header("Location: ../adminDashboard.php");
-        exit();
-    } else {
-        echo "Erro ao criar o grupo.";
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1>Criar Novo Grupo</h1>
         </div>
 
-        <form method="POST">
+        <form action="backend/criarGrupo.php" method="POST">
             <label for="nome">Nome do Grupo:</label>
             <input type="text" id="nome" name="nome" required>
 

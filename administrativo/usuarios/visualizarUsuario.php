@@ -24,3 +24,32 @@ if (!$usuario) {
     exit();
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/index.css">
+    <link rel="stylesheet" href="../../assets/css/adminDashboard.css">
+    <title>Visualizar Usuário</title>
+</head>
+<body>
+    <div class="card">
+        <div class="titulo">
+            <h1>Detalhes do Usuário</h1>
+        </div>
+
+        <div class="detalhes">
+            <p><strong>ID:</strong> <?php echo $usuario['id']; ?></p>
+            <p><strong>Nome:</strong> <?php echo $usuario['nome_completo']; ?></p>
+            <p><strong>Email:</strong> <?php echo $usuario['email']; ?></p>
+            <p><strong>Grupo Colaborativo ID:</strong> <?php echo $usuario['grupo_id']; ?></p>
+        </div>
+
+        <div class="botoes">
+            <a href="../adminDashboard.php">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>

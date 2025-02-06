@@ -19,19 +19,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         echo "Grupo não encontrado!";
         exit();
     }
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $queryDelete = $conexao->prepare("DELETE FROM grupo WHERE id = :id");
-        $queryDelete->bindParam(':id', $id, PDO::PARAM_INT);
-
-        if ($queryDelete->execute()) {
-            echo "Grupo excluído com sucesso!";
-            header("Location: ../adminDashboard.php");
-            exit();
-        } else {
-            echo "Erro ao excluir o grupo.";
-        }
-    }
 } else {
     echo "ID inválido!";
     exit();
@@ -55,7 +42,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <p>Tem certeza que deseja excluir o grupo <strong><?php echo htmlspecialchars($grupo['nome']); ?></strong>?</p>
 
-        <form method="POST">
+        <form action="backend/excluirGrupo.php?id=<?=$grupo['id']?>" method="POST">
             <div class="botoes">
                 <a href="../adminDashboard.php">Cancelar</a>
                 <button type="submit">Confirmar Exclusão</button>
