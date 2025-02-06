@@ -24,23 +24,6 @@ if (!$nota) {
     echo "Nota não encontrada!";
     exit();
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo = $_POST['titulo'];
-    $conteudo = $_POST['conteudo'];
-
-    $queryUpdate = $conexao->prepare("UPDATE nota SET titulo = :titulo, conteudo = :conteudo WHERE id = :id");
-    $queryUpdate->bindParam(':titulo', $titulo);
-    $queryUpdate->bindParam(':conteudo', $conteudo);
-    $queryUpdate->bindParam(':id', $notaId);
-
-    if ($queryUpdate->execute()) {
-        header('Location: notas.php');
-        exit();
-    } else {
-        echo "Erro ao editar a nota.";
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="card">
             <h1>Editar Nota</h1>
     
-            <form method="POST">
+            <form action="backend/editarNota.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $nota['id'];?>">
                 <div class="campos">
                     <div class="campos__campo">
                         <label for="titulo">Título:</label>
